@@ -1,0 +1,227 @@
+:root {
+  /* Color-Themes */
+
+  /* Beige */
+  --beige-nav: rgb(245, 245, 220);
+  --beige-logo-text: rgb(222, 184, 135);
+  --beige-text-hover: rgb(230, 155, 57);
+  --a-beige-text: rgb(178, 146, 103);
+  --beige-aside-bg: rgb(218, 206, 181);
+
+  /* Digital-Screen (DS) */
+  --ds-nav: rgb(57, 91, 165);
+  --ds-logo-text: rgb(237, 172, 56);
+  --ds-text-hover: rgb(228, 213, 20);
+  --ds-a-text: rgb(255, 118, 45);
+  --ds-aside-bg: rgb(237, 172, 56);
+
+  --footer-whitesmoke: whitesmoke;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* LAYOUT */
+body {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "navbar navbar"
+    "sidebar main"
+    "sidebar footer";
+  overflow: hidden;
+}
+
+/* NAVBAR */
+nav {
+  top: 0px;
+  position: sticky;
+  grid-area: navbar;
+  background-color: var(--beige-nav);
+  color: var(--beige-logo-text);
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+/* NAVLINK TEXT */
+a {
+  color: var(--a-beige-text);
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+a:hover {
+  color: var(--beige-text-hover);
+}
+
+/* SIDEBAR */
+aside {
+  height: calc(100vh - 66px);
+  top: 50px;
+  position: sticky;
+  align-self: start;
+  grid-area: sidebar;
+  background-color: var(--beige-aside-bg);
+  padding: 0.8rem;
+  z-index: 2;
+}
+
+main {
+  grid-area: main;
+}
+
+.slide-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide-container .list .slide-item {
+  position: absolute;
+  inset: 0 0 0 0;
+}
+
+.slide-container .list .slide-item img {
+  width: 100%;
+  height: fixed;
+  object-fit: cover;
+}
+
+/* FOOTER */
+footer {
+  z-index: 100;
+  grid-area: footer;
+  background-color: var(--footer-whitesmoke);
+  padding: 1em;
+  padding-bottom: 1.5em;
+}
+
+/* INFNINATE-SCROLL */
+.wrapper {
+  width: 90%;
+  max-width: 1536px;
+  margin-inline: auto;
+  position: relative;
+  height: 50px;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0)
+  );
+}
+
+@keyframes scrollLeft {
+  to {
+    left: -200px;
+  }
+}
+
+.item {
+  width: 200px;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  border-radius: 6px;
+  position: absolute;
+  left: max(calc(200px * 8), 1078px);
+  animation-name: scrollLeft;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.item1 {
+  justify-content: center;
+  align-items: center;
+  animation-delay: calc(30s / 8 * (8 - 1) * -1);
+}
+.item2 {
+  justify-content: center;
+  align-items: center;
+  animation-delay: calc(30s / 8 * (8 - 2) * -1);
+}
+.item3 {
+  justify-content: center;
+  align-items: center;
+  animation-delay: calc(30s / 8 * (8 - 3) * -1);
+}
+.item4 {
+  justify-content: center;
+  align-items: center;
+  animation-delay: calc(30s / 8 * (8 - 4) * -1);
+}
+.item5 {
+  justify-content: center;
+  align-items: center;
+  animation-delay: calc(30s / 8 * (8 - 5) * -1);
+}
+.item6 {
+  justify-content: center;
+  align-items: center;
+  animation-delay: calc(30s / 8 * (8 - 6) * -1);
+}
+.item7 {
+  justify-content: center;
+  align-items: center;
+  animation-delay: calc(30s / 8 * (8 - 7) * -1);
+}
+.item8 {
+  justify-content: center;
+  align-items: center;
+  animation-delay: calc(30s / 8 * (8 - 8) * -1);
+}
+
+@media (max-width: 1122.4px) {
+  .carousel {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .carousel .list .slide-item {
+    position: absolute;
+    inset: 0 0 0 0;
+  }
+  .carousel .list .slide-item img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    grid-template-columns: 1fr;
+  }
+
+  a {
+    justify-content: center;
+    text-decoration: none;
+    margin-left: 20px;
+  }
+
+  aside {
+    position: fixed;
+    width: 200px;
+    display: none;
+  }
+
+  main {
+    min-width: 100vw;
+  }
+
+  .show {
+    display: block;
+  }
+}
